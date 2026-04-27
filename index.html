@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Terms of Service</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f0f14;
+            color: #e4e4e7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #18181f;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #a78bfa;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #cfcfd4;
+        }
+
+        .highlight {
+            color: #f87171;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+        button {
+            display: block;
+            margin: 40px auto 10px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #5865F2;
+            color: white;
+            font-size: 16px;
+            cursor: not-allowed;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        button.active {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Terms of Service</h1>
+
+    <p>Last updated: [DATE]</p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>
+        By using this bot, you agree to these Terms of Service. If you do not agree, please do not use the bot.
+    </p>
+
+    <h2>2. Usage</h2>
+    <p>
+        You agree not to misuse the bot, spam excessively, or use it for harmful purposes.
+    </p>
+
+    <h2>3. Limitations</h2>
+    <p>
+        The bot is provided "as is" without warranties. We are not responsible for any damage or issues caused by usage.
+    </p>
+
+    <h2>4. Data</h2>
+    <p>
+        The bot may process basic interaction data to function properly. No sensitive personal data is intentionally stored.
+    </p>
+
+    <h2>5. Termination</h2>
+    <p>
+        We reserve the right to restrict or block access to the bot at any time without notice.
+    </p>
+
+    <h2>6. Changes</h2>
+    <p>
+        These terms may be updated at any time. Continued use means you accept the updated terms.
+    </p>
+
+    <h2>7. Contact</h2>
+    <p>
+        For questions, contact: <span class="highlight">@notatedy</span> <span> on discord.</span>
+    </p>
+
+    <!-- 🔥 BUTTON ADDED (no text changed above) -->
+    <button id="copyBtn" disabled>Wait 60s...</button>
+    <div class="timer" id="timerText">You must wait 60 seconds</div>
+
+    <div class="footer">
+        © 2026 FeetLicker. All rights reserved.
+    </div>
+</div>
+
+<script>
+    let timeLeft = 60;
+    const btn = document.getElementById("copyBtn");
+    const timerText = document.getElementById("timerText");
+
+    const interval = setInterval(() => {
+        timeLeft--;
+
+        timerText.textContent = "You must wait " + timeLeft + " seconds";
+
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            btn.disabled = false;
+            btn.textContent = "Copy Invite Link";
+            btn.classList.add("active");
+            timerText.textContent = "You can now continue";
+        }
+    }, 1000);
+
+    btn.addEventListener("click", () => {
+        const link = "https://discord.com/oauth2/authorize?client_id=1498320177006116966&scope=applications.commands&integration_type=1"; // change if needed
+
+        navigator.clipboard.writeText(link).then(() => {
+            alert("✅ Link copied to clipboard!");
+        }).catch(() => {
+            alert("❌ Failed to copy link.");
+        });
+    });
+</script>
+
+</body>
+</html>
